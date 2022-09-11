@@ -1,6 +1,7 @@
 
 import Step1 from "../page/step1";
 import Step2 from "../page/step2";
+import Step3 from "../page/step3";
 import { useState } from "react";
 
 export default function App() {
@@ -11,22 +12,24 @@ export default function App() {
   function changeNextStep() {
     setStep(step + 1);
   }
+  function changeNextthirdStep() {
+    setStep(step + 1);
+  }
   function Hello() {
     if (step === 1) {
       return <Step1 next={changeNextStep} />;
-    } else {
-      return <Step2 next={changeNextStep} back={goBack} />;
+    } 
+    else if (step===2)
+    {
+      return <Step2 next={changeNextthirdStep} back={goBack} />;
+    }
+    else {
+   
+      return <Step3 />
     }
   }
 
   return <>{Hello()}</>;
 }
 
-{/* <div class={styles.container}>
-    <ul class={styles.progressbar}>
-        <li class={styles.active}>1 step</li>
-        <li >2 step</li>
-        <li >3 step</li>
-    </ul>
-   
-</div> */}
+

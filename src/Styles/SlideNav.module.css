@@ -63,16 +63,20 @@ background-color: green;
 .box1
 {
     background-color: aqua;
-    width:200px;
-    height:200px;
+ 
     text-align: center;
   
 }
 .box2{
     background-color: yellow;
-    width:200px;
-    height:200px;
+
     text-align: center;
     
 
+}
+.box3
+{
+    background-color: bisque;
+;
+    text-align: center;
 }
