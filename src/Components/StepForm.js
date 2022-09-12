@@ -7,50 +7,72 @@ import Saved from "../page/Saved";
 export default function App() {
   const [UserInput, setUserInputStep] = useState({
     name: null,
-    last_name: null,
-    number: null,
+    lastName: null,
+    phoneNumber: null,
+    Country: null,
+    Place: null,
+    Month_Income: null,
   });
+
   const [name, setName] = useState(" ");
   const [lastName, setLastName] = useState("");
   const [number, setNumber] = useState(0);
   const [step, setStep] = useState(1);
+
   function goBack() {
     setStep(step - 1);
   }
-  function changeNextStep(event, value) {
-    console.log("helo" + value);
-    setName(value);
-    let obj = { name: name, last_name: lastName, number: number };
+  function changeNextStep(event, data) {
+    setName(data);
+
     setUserInputStep((prevState) => ({
       ...prevState,
-      name: value,
+      name: data.name,
+      lastName: data.lastName,
+      phoneNumber: data.phoneNumber,
     }));
-    console.log(UserInput);
     setStep(step + 1);
   }
 
   function changeNextthirdStep(event, value) {
-    console.log("helo" + value);
     setLastName(value);
-    let obj = { name: name, last_name: lastName, number: number };
+
     setUserInputStep((prevState) => ({
       ...prevState,
-      last_name: value,
+      Country: value.Country,
+      Place: value.Place,
     }));
-    console.log(UserInput);
     setStep(step + 1);
   }
 
   function saveAll(event, value) {
-    setStep(step + 1);
-    console.log("helo" + value);
     setNumber(value);
-    let obj = { name: name, last_name: lastName, number: number };
+    setUserInputStep((prevState) => ({
+      ...prevState,
+      Month_Income: value,
+    }));
+    setStep(step + 1);
+  }
+
+  function showAllUserData(event, value) {
+    setNumber(value);
+    let obj =UserInput;
     setUserInputStep((prevState) => ({
       ...prevState,
       number: value,
     }));
     console.log(UserInput);
+    let show = document.getElementById("preview");
+    show.innerHTML =
+     ` 
+    <p> name :${obj.name}</p>
+    <p> lastName :${obj.lastName}</p>
+    <p> phoneNumber :${obj.phoneNumber}</p>
+    <p> Country :${obj.Country}</p>
+    <p> Place :${obj.Place}</p>
+     <p> Month_Income :${obj.Month_Income}</p>
+     `
+    setStep(step + 1);
   }
 
   function Hello() {
@@ -61,7 +83,7 @@ export default function App() {
     } else if (step === 3) {
       return <Step3 saved={saveAll} />;
     } else {
-      return <Saved />;
+      return <Saved data={showAllUserData} />;
     }
   }
 

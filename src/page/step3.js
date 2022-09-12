@@ -10,9 +10,9 @@ export default function page3(props) {
         </div>
         <div class="col-12">
           <div class={styles.box3}>
-            <h1>Step 3</h1>
+            <h1> User Income</h1>
             <form>
-              <input type="number" id="number" /> number
+            Month_Income: <input type="number" id="number" /> 
             </form>
           </div>
           <button
